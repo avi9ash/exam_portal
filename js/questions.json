@@ -1,0 +1,14 @@
+
+[
+
+{
+	"text" : "What is the best language?",
+	"options" : ["C",  "Python"]
+},
+{
+	"text" : "which is the worst language?",
+	"options" : ["java"]
+
+}
+
+]

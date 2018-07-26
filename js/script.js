@@ -50,3 +50,35 @@ var x = setInterval(function() {
         document.getElementById("demo").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+
+var app = angular.module('ng_questions', []);
+    app.controller('myController', function($scope, $http) {
+        $http.get('questions.json')
+            .then(function(res){
+                $scope.questions = res.data;
+            });
+    });
+
+angular.bootstrap(document.getElementById("quest"), ['ng_questions']);
+
+
+function showQuestion() {
+    
+      if (window.XMLHttpRequest) {
+          // code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp = new XMLHttpRequest();
+      } else {
+          // code for IE6, IE5
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("quest1").innerHTML = this.responseText;
+          }
+      };
+      //$GLOBALS['q_id'] += 1;
+      xmlhttp.open("GET","display_question.php",true);
+      xmlhttp.send();
+    
+}

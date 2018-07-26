@@ -1,24 +1,7 @@
 <?php
-$db_host = 'localhost'; // Server Name
-$db_user = 'root'; // Username
-$db_pass = ''; // Password
-$db_name = 'db_exam'; // Database Name
+    $q_id=1;
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if (!$conn) {
-    die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
-}
-
-$sql = 'SELECT * 
-        FROM t_question;
-        
-$query = mysqli_query($conn, $sql);
-
-if (!$query) {
-    die ('SQL Error: ' . mysqli_error($conn));
-}
-?>
-
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +40,7 @@ if (!$query) {
 </head>
 
     
-<body>
+<body >
     <div id="container">
         <nav style="position: absolute; width: 1366px;">
             <ul>
@@ -109,36 +92,20 @@ if (!$query) {
             <p>{{question.text}}</p>
             <p ng-repeat="option in question.options">&nbsp;&nbsp;&nbsp;{{option}}</p>
 
-         <!--    <?php
-        $no     = 1;
-        $total  = 0;
-        while ($row = mysqli_fetch_array($query))
-        {
-            $amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
-            echo '<tr>
-                    <td>'.$no.'</td>
-                    <td>'.$row['name'].'</td>
-                    <td>'.$row['item'].'</td>
-                    <td>'. date('F d, Y', strtotime($row['date'])) . '</td>
-                    <td>'.$amount.'</td>
-                </tr>';
-            $total += $row['amount'];
-            $no++;
-        }?> -->
-
-
         
             
         </div>
-        <?php
-        while ($row = mysqli_fetch_array($query))
-        {
-           echo '<p>'.$row['text'].'</p>'
-           echo '<br/><p>'.$row['op1'].'</p>';
-        }?>
-    </div>
-       
-               
+
+        <p>Question:</p>
+       <div id="quest1"><b></b></div>
+    
+        <div method="post" action="exam.php">
+            
+                <button type="nextbtn" name="next" class="btn1" onclick="showQuestion()">Next</button>
+           
+        </div>
+
+        
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
