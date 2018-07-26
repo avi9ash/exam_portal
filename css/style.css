@@ -1,0 +1,158 @@
+img{
+	/*width: 40%;*/
+}
+#logo
+{
+	/*width: 535px;
+	height: 116px;*/
+	width: 37.6%;
+}
+#submit 
+{
+	float: right;
+	border-radius: 12px;
+	background-color: #0C457E;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 24px;
+	padding: 18px;
+	height: 8%;
+	width: 14%;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 1.8%;
+}
+
+#submit span 
+{
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+#submit span:after 
+{
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+#submit:hover span 
+{
+	padding-right: 25px;
+}
+
+#submit:hover span:after 
+{
+	opacity: 1;
+	right: 0;
+}
+.timer1
+{
+	float: left;
+	font-size: 38px;
+	padding-left: 21.6%;
+	margin: 2%;
+	font-family: sans-serif;
+}
+nav
+{
+	border-bottom: 1px solid gray;
+	left: 0px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 116px;
+}
+
+ul {
+	padding: 0em;
+	/*border-bottom: 1px solid gray;*/
+	border-left: none;
+	border-right: none;
+}
+
+nav li {
+	display: inline;
+	list-style-type: none;
+	/*padding: 0 2em;*/
+}
+.vl {
+	float: left;
+	border-right: 1px solid gray;
+	height: 650px;
+	width: 29%;
+	margin-top: 0%;
+	left: -10%;
+}
+.question_side
+{
+	float: left;
+}
+#physics
+{
+	margin-left: 4%;
+	width: 92%;
+	height: 21%;
+	border: 1px solid #707070;
+	border-radius: 36px;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+#chemistry
+{
+	margin-left: 5%;
+	width: 90%;
+	height: 21%;
+	border: 1px solid #707070;
+	border-radius: 36px;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+#maths
+{
+	margin-left: 5%;
+	width: 90%;
+	height: 21%;
+	border: 1px solid #707070;
+	border-radius: 36px;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+#english
+{
+	margin-left: 5%;
+	width: 90%;
+	height: 21%;
+	border: 1px solid #707070;
+	border-radius: 36px;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+.qbtn
+{
+	margin-top: 6px;
+	border: 1px solid #000000;
+	border-radius: 50%;
+	width: 8.6%;
+	background-color: #FFF;
+	font-size: 15px;
+	margin-right: 4px;
+}
+#q1
+{
+	background-color: #17EE42;
+}
+#q3
+{
+	background-color: #FF0000;
+}
+#q4
+{
+	background-color: #0B73DB;
+}
