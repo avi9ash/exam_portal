@@ -1,11 +1,20 @@
+html, body, {
+    position:fixed;
+    top:30;
+    bottom:0;
+    left:0;
+    right:0;
+    padding-top: 2000;
+}
+
 img{
 	/*width: 40%;*/
 }
 #logo
 {
-	/*width: 535px;
-	height: 116px;*/
-	width: 37.6%;
+	width: 535px;
+	height: 116px;
+	/*width: 37.6%;*/
 }
 #submit 
 {
@@ -17,11 +26,12 @@ img{
 	text-align: center;
 	font-size: 24px;
 	padding: 18px;
-	height: 8%;
-	width: 14%;
+	/*height: 8%;
+	width: 14%;*/
 	transition: all 0.5s;
 	cursor: pointer;
-	margin: 1.8%;
+	margin: 20px;
+	/*margin: 1.8%;*/
 }
 
 #submit span 
@@ -56,8 +66,11 @@ img{
 {
 	float: left;
 	font-size: 38px;
+	/*
 	padding-left: 21.6%;
-	margin: 2%;
+	*/
+	margin: 30px;
+	padding-left: 295px;
 	font-family: sans-serif;
 }
 nav
