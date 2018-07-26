@@ -9,7 +9,7 @@
 	$phoneno=0;
 	$errors = array();
 	// connect to the db
-	$db = mysqli_connect('localhost', 'root', '', 'db_exam');
+	//$db = mysqli_connect('localhost', 'root', '', 'db_exam');
 
 	// if the signup button is clicked
 	if (isset($_POST['signup'])) {
@@ -40,43 +40,43 @@
 
 		// if there are no errors, save user to database
 		if (count($errors) == 0) {
-			$sql = "INSERT INTO t_student (username, regno, email, phoneno, dept) VALUES ('$username', '$regno', '$email', '$phoneno', '$dept')"; 
-			mysqli_query($db, $sql);
+			// $sql = "INSERT INTO t_student (username, regno, email, phoneno, dept) VALUES ('$username', '$regno', '$email', '$phoneno', '$dept')"; 
+			// mysqli_query($db, $sql);
 			$_SESSION['q_id']=0;
 			$_SESSION['username'] = $username;
 			$_SESSION['success'] = "Signup successful";
-			header('location: index.php'); // redirect to home page
+			header('location: exam.html'); // redirect to home page
 		}
 	}
 
 	
 
-	if(empty($query)) {
-		echo "ok";
+	// if(empty($query)) {
+	// 	echo "ok";
 		
-		$query = "";
-		$text = "";
-		$db_host = 'localhost'; // Server Name
-	    $db_user = 'root'; // Username
-	    $db_pass = ''; // Password
-	    $db_name = 'db_exam'; // Database Name
+	// 	$query = "";
+	// 	$text = "";
+	// 	$db_host = 'localhost'; // Server Name
+	//     $db_user = 'root'; // Username
+	//     $db_pass = ''; // Password
+	//     $db_name = 'db_exam'; // Database Name
 
-	    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-	    if (!$conn) {
-	        die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
-	    }
+	//     $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+	//     if (!$conn) {
+	//         die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
+	//     }
 
-	    $sql = 
-	            "SELECT * FROM t_question";
+	//     $sql = 
+	//             "SELECT * FROM t_question";
 	            
-	    $query = mysqli_query($conn, $sql);
+	//     $query = mysqli_query($conn, $sql);
 
-	    if (!$query) {
-	        die ('SQL Error: ' . mysqli_error($conn));
-		}
+	//     if (!$query) {
+	//         die ('SQL Error: ' . mysqli_error($conn));
+	// 	}
 
         
-	}
+	// }
 
 	// logout
 	if (isset($_GET['logout'])) {
