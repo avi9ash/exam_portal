@@ -12,7 +12,7 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 		return n;
 	};
 
-	$scope.clicked = 4;
+	$scope.clicked = 1;
 	$scope.ccolor = "#FFFFFF";
 	/*$scope.qSelect = function(btn){
 		var property = document.getElementById(btn);
