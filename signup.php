@@ -24,15 +24,15 @@
 		</div>
 		<div class="input-group">
 			<label>Email</label>
-			<input type="text" name="email">
+			<input type="text" name="email" value="<?php echo $email; ?>">
 		</div>
 		<div class="input-group">
 			<label>Phone No</label>
-			<input type="text" name="phoneno">
+			<input type="text" name="phoneno" value="<?php echo $phoneno; ?>">
 		</div>
 		<div class="input-group">
 			<label>Department</label>
-			<input type="text" name="dept">
+			<input type="text" name="dept" value="<?php echo $dept; ?>">
 		</div>
 		<div class="input-group">
 			<button type="submit" name="signup" class="btn">Sign up</button>
