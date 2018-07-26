@@ -4,11 +4,9 @@ html, body, {
     bottom:0;
     left:0;
     right:0;
+    padding-top: 2000;
 }
 
-img{
-	/*width: 40%;*/
-}
 #logo
 {
 	width: 535px;
@@ -28,9 +26,11 @@ img{
 	padding: 18px;
 	/*height: 8%;
 	width: 14%;*/
+	width: 191px;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 20px;
+	margin-left: 600px;
 	/*margin: 1.8%;*/
 }
 
@@ -62,20 +62,19 @@ img{
 	opacity: 1;
 	right: 0;
 }
+#demo 
+{
+	position: fixed;
+}
 .timer1
 {
-	position: absolute;
-	
 	font-size: 38px;
 	/*
 	padding-left: 21.6%;
 	*/
 	margin: 30px;
-	padding-left: 230px;
+	padding-left: 274px;
 	font-family: sans-serif;
-}
-#demo {
-	position: fixed;
 }
 nav
 {
@@ -161,6 +160,15 @@ nav li {
 	font-size: 15px;
 	margin-right: 4px;
 }
+#q100
+{
+	padding-left: 0px;
+	font-size: 14px;
+}
+.qbtn:hover
+{
+	background-color: #0B73DB;
+}
 #q1
 {
 	background-color: #17EE42;
@@ -173,3 +181,198 @@ nav li {
 {
 	background-color: #0B73DB;
 }
+
+
+
+.nav_btns 
+{
+	float: left;
+	border: 1px solid black;
+	border-radius: 12px;
+	background-color: #FFF;
+	color: #000;
+	text-align: center;
+	font-size: 12px;
+	padding: 6px;
+	/*height: 8%;
+	width: 14%;*/
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 20px;
+	/*margin: 1.8%;*/
+}
+.nav_btns span 
+{
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+#prev
+{
+	width: 90px;
+}
+
+#prev span:before
+{
+	content: '\00ab';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: -20px;
+	transition: 0.5s;
+}
+
+#prev:hover span 
+{
+	padding-left: 15px;
+}
+
+#prev:hover span:before 
+{
+	opacity: 1;
+	left: 0;
+}
+
+#next
+{
+	width: 75px;
+}
+#next span:after 
+{
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+#next:hover span 
+{
+	padding-right: 15px;
+}
+
+#next:hover span:after 
+{
+	opacity: 1;
+	right: 0;
+}
+
+.mc
+{
+	float: left;
+	border: 1px solid black;
+	border-radius: 12px;
+	background-color: #FFF;
+	color: #000;
+	text-align: center;
+	font-size: 12px;
+	padding: 6px;
+	/*height: 8%;
+	width: 14%;*/
+	width: 80px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 20px;
+	/*margin: 1.8%;*/
+}
+
+#btn_div1
+{
+	margin-bottom: 60px;
+}
+#btn_div2
+{
+	float: left;
+	margin-left: 10px;
+	width: 950px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #707070;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 40px; /* Location of the box */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FF0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal-head {
+    padding-left: 12px;
+    background-color: #0B73DB;
+    color: white;
+}
+
+.modal-body 
+{
+	padding: 2px 16px;
+}
+
+.confirm {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 15px 2px;
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+#yes {background-color: #008CBA;} /* Blue */
+#no {background-color: #f44336;} /* Red */ 
