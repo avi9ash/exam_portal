@@ -1,4 +1,10 @@
 
+var request = new XMLHttpRequest();
+request.open("GET", "js/questions.json", false);
+request.send(null);
+var questions = JSON.parse(request.responseText);
+console.log(questions);
+
 function toggleFullScreen(elem) {
 
   if (elem.requestFullScreen) {
@@ -12,8 +18,30 @@ function toggleFullScreen(elem) {
     }
 }
 
+// $(document).ready(function() {
+//  $('select').on('change', function(event) {
+//   // Make sure the form does not get submitted the old-fashioned way
+//   event.preventDefault();
 
-angular.module('myApp', []).controller('Main', function ($scope) {
+//   // Your ajax call, including the parameter, data type and method
+//   $.ajax({
+//     type: "GET",                    // GET to match your php script
+//     url: "display_question.php",
+//     dataType: 'json',               // Let jQuery parse the results   
+//     //data: $('form').serialize(),    // Send you data
+//     success: function (obj) { 
+//       console.log(obj);             // this will be an object for valid json
+//       } 
+//   });
+//  });
+// });
+
+angular.module('myApp', []).controller('Main', function ($scope, $http) {
+	/*$http.get('questions2.json')
+       .then(function(res){
+          $scope.todos = res.data;  
+          console.log($scope.todos);              
+        });*/
 	$scope.range = function(min, max, step){
 		step = step || 1;
 		var input = [];
@@ -32,36 +60,25 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 
 	$scope.clicked = 1;
 	$scope.ccolor = "#FFFFFF";
-	/*$scope.qSelect = function(btn){
-		var property = document.getElementById(btn);
-		if ($scope.count == 0) {
-			property.style.backgroundColor = "#FFFFFF"
-			$scope.count = 1;        
-		}
-		else {
-			property.style.backgroundColor = "#0B73DB"
-			$scope.count = 0;
-		}
-	}
-	
-	$scope.buttonClick= function (s){
-		$scope.selectedButton = s; 
-	};*/
 
 	
 	$scope.btn = 'q';
  	$scope.qSelect = function(n) {
+ 		n = (n>0)?(n-1)%80+1:80;
  		var property = document.getElementById("q"+$scope.clicked);
  		property.style.backgroundColor = $scope.ccolor;
+ 		//property.style.backgroundColor = #FFFFFF";
   	var property = document.getElementById("q"+n);
   	$scope.clicked = n;
-  	$scope.ccolor = property.style.backgroundColor;
+  	var w = property.style.backgroundColor;
+  	//$scope.qClear(n);
+  	$scope.ccolor = w;
 		property.style.backgroundColor = "#0B73DB";
 		$scope.currentQs = qsArr[n-1];
-		toggleFullScreen(document.body);
+		//toggleFullScreen(document.body);
  	};
 
- 	$scope.qMark = function(n) {
+ 	/*$scope.qMark = function(n) {
   	var property = document.getElementById("q"+n);
   	var a = property.style.backgroundColor;
   	if (a === "rgb(255, 0, 0)") 
@@ -74,7 +91,7 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 			property.style.backgroundColor = "#FF0000";
 			$scope.ccolor = property.style.backgroundColor;
 		}
- 	};
+ 	};*/
  	$scope.qAnswer = function(n) {
   	var property = document.getElementById("q"+n);
   	property.style.backgroundColor = "#17EE42";
@@ -90,6 +107,29 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 		$scope.ccolor = "#FFFFFF";
   };
 
+  // $scope.postData = function () {
+  //   $http.post('http://localhost/exam_portal/display_question.php', {user:$scope.formData}).success(
+  //     function(data){
+  //       $scope.response = data;
+  //       console.log($scope.response);
+  //     })
+  // };
+
+  
+
+  // var thisCtrl = this;
+  // $scope.getData1 = function () {
+  // this.route = 'questions2.json';
+  // $http.get(thisCtrl.route)
+  //   .success(function(data){
+  //     console.log(data);
+  //   })
+  //   .error(function(data){
+  //     console.log("Error getting data from " + thisCtrl.route);
+  //   });  
+  // }
+  // console.log($scope.response);
+
   var qs =  function(q_id, text, op1, op2, op3, op4, ans, sub_id){
 			this.q_id = q_id,
 			this.text = text,
@@ -104,33 +144,25 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 	var qsArr = [];
 	//var qsArr = JSON.parse('{ "q_id": "1", "text": "This is the first qs.", "op1": "1", "op2": "2", "op3": "3", "op4": "4", "ans": "2", "sub_id": "1" }');
 	$scope.init = function(){
-		//$scope.qSelect(2);
-		//qsArr = [new qs(1,"This is the qs"), new qs(2, "This is second qs"), new qs(3, "This is third qs")];
-		for (var i = 0; i < 100; i++) {
-
-			qsArr.push(new qs(i+1, "This is the qs "+(i+1), (i+1), (i+2), (i+3), (i+4), "2", 1));
+		for (var i = 0; i < 80; i++) {
+			//qsArr.push(new qs(i+1, "This is the qs "+(i+1), (i+1), (i+2), (i+3), (i+4), "2", 1));
+			qsArr.push(new qs(questions[i].q_id, questions[i].text, questions[i].op1, questions[i].op2, questions[i].op3, questions[i].op4, questions[i].ans, questions[i].sub_id));
 		}
 		//qsArr.push(new qs(1, "This is the first qs.", "1", "2", "3", "4", "2", 1));
 		//qsArr.push(new qs(2, "This is the second qs.", "6", "7", "8", "9", "6", 1));
 		$scope.currentQs = qsArr[0];
 		console.log("Start");
+		//$scope.getData1();
 	};
 
- 	// Get the modal
   var modal = document.getElementById('myModal');
-
-  // Get the button that opens the modal
   var btn = document.getElementById("sumbit");
-
-  // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks the button, open the modal 
   $scope.dialogBox = function() {
       modal.style.display = "block";
   }
 
-  // When the user clicks on <span> (x), close the modal
   $scope.close = function() {
       modal.style.display = "none";
   }
@@ -145,21 +177,10 @@ angular.module('myApp', []).controller('Main', function ($scope) {
 
 
 });
-/*var myApp = angular.module('myApp', []);
-myApp.filter('range', function() {
-	return function(input, total) {
-		total = parseInt(total);
-		for (var i=0; i<total; i++)
-			input.push(i);
-		return input;
-	};
-});
 
-function Main($scope){
-}   */ 
 
 // Set the date we're counting down to
-var countDownDate = new Date().getTime() + 1000*60*60*2 + 2000; // 1st years at least deserve 2 hours for 100 questions
+var countDownDate = new Date().getTime() + 1000*60*60*1.5 + 2000; // 1st years at least deserve 2 hours for 100 questions
 var x = setInterval(function() {
 		var now = new Date().getTime();
 		var distance = countDownDate - now;

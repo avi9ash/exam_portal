@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
     <title>Exam Portal</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -24,9 +25,9 @@
           }
 
            #container{
-                  /*Styling for any element with the id="container" */
+                  /*Styling for any element with the id="container1" */
                           width:1366px; /* The width is fixed by pixels */
-                           height:768px; /* The height is fixed by pixels*/
+                           height:748px; /* The height is fixed by pixels*/
                            
             }
     </style>
@@ -45,7 +46,7 @@
             <li><button id="submit" class="button" ng-click="dialogBox()" style="vertical-align:middle"> <b><span>Submit </span></b> </button></li>
         </ul>
     </nav>
-    <p style="font-size: 11px; color: #FF0000; padding-left: 841px; padding-top: 85px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
+    <p style="font-size: 11px; color: #FF0000; padding-left: 841px; padding-top: 64px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
     <!-- count particles -->
     <div class="vl">
         <br>
@@ -53,37 +54,37 @@
             <b>&nbsp&nbsp&nbspPhysics</b><br>
             <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(1,10)">{{n}}</button><br>
             <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(11,20)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(21,25)">{{n}}</button>
+            <!-- <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(21,25)">{{n}}</button> -->
         </div>
         <br>
         <div id="chemistry" class="w3-container"> 
             <b>&nbsp&nbspChemistry</b><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(26,35)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(36,45)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(46,50)">{{n}}</button>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(21,30)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(31,35)">{{n}}</button><br>
+            <!-- <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(46,50)">{{n}}</button> -->
         </div>
         <br>
         <div id="maths" class="w3-container"> 
             <b>&nbsp&nbsp&nbspMaths</b><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(51,60)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(61,70)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(71,80)">{{n}}</button>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(36,45)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(46,55)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(56,60)">{{n}}</button>
         </div>
         <br>
         <div id="english" class="w3-container"> 
             <b>&nbsp&nbsp&nbspEnglish</b><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(81,90)">{{n}}</button><br>
-            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(91,100)">{{n}}</button> 
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(61,70)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(71,80)">{{n}}</button> 
         </div>
     </div>
-    <div id="question_side" style="border-top: 1px solid gray;">
+    <div id="question_side" style="border-top: 1px solid gray; margin-top: 20px;">
 
         <!-- I will add a div here later for the mark, previous, next buttons -->
         <br>
         <div id="btn_div1">
             <button id="prev" class="nav_btns" ng-click="qSelect(clicked-1)" style="vertical-align:middle"> <b><span>Previous </span></b> </button>
-            <button id="mark" class="mc" ng-click="qMark(clicked)" style="vertical-align:middle; margin-left: 250px;"> <b><span><i class="fas fa-bookmark"></i>&nbspMark </span></b> </button>
-            <button id="clear" class="mc" ng-click="qClear(clicked)" style="vertical-align:middle"> <b><span><i class="fas fa-eraser"></i>&nbspClear </span></b> </button>
+            <!-- <button id="mark" class="mc" ng-click="qMark(clicked)" style="vertical-align:middle; margin-left: 250px;"> <b><span><i class="fas fa-bookmark"></i>&nbspMark </span></b> </button> -->
+            <button id="clear" class="mc" ng-click="qClear(clicked)" style="vertical-align:middle; margin-left: 280px;"> <b><span><i class="fas fa-eraser"></i>&nbspClear </span></b> </button>
             <button id="next" class="nav_btns" ng-click="qSelect(clicked+1)" style="vertical-align:middle; float: right; margin-right: 30px;"> <b><span>Next </span></b> </button>
         </div> 
         <br style="border: 1px solid black;">
@@ -92,7 +93,7 @@
 
         <!-- Question div comes after this line -->
 
-        <div style="float: left;" ng-model="currentQs">
+        <div style="float: left; overflow-y: scroll; height:470px;" ng-model="currentQs">
             <!--<p style="margin-left: 20px; padding-right: 15px; font-family: sans-serif; font-size: 40px; float: left; border-right: 1px solid gray">9.</p>
             <p style="margin-left: 10px; font-size: 25px; float: left; width: 850px;">This is a sample question. Just assume this is a really hard math question and pretend to get frustrated. What is 2 + 2?</p>
 
@@ -105,10 +106,10 @@
                 <br>
             </form> -->
             <!--<input type="button" value="c" onclick="toggleFullScreen(document.body)" /> -->
-            <p style="margin-left: 20px; padding-right: 15px; font-family: sans-serif; font-size: 40px; float: left; border-right: 1px solid gray">{{currentQs.q_id}}{{"."}}</p>
+            <p style="margin-left: 16px; padding-right: 15px; font-family: sans-serif; font-size: 40px; float: left; border-right: 1px solid gray">{{currentQs.q_id}}{{"."}}</p>
             <p style="margin-left: 10px; font-size: 25px; float: left; width: 850px;">{{currentQs.text}}</p>
             <br>
-            <form style="margin-left: 80px; font-family: sans-serif; font-size: 20px;">
+            <form style="margin-left: 100px; font-family: sans-serif; font-size: 20px; width: 760px;">
                 <br><br>
                     <input type="radio" name="answer" value="4" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op1}}<br>
                     <input type="radio" name="answer" value="Four" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op2}}<br>
@@ -143,6 +144,7 @@
     <script>
         
     </script>
+    <script type="text/javascript" src="questions.json"></script>
     <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>

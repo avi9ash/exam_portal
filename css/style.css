@@ -90,18 +90,19 @@ html:fullscreen
 	/*
 	padding-left: 21.6%;
 	*/
-	margin: 30px;
+	margin: 24px;
+	margin-left: 30px;
 	padding-left: 274px;
 	font-family: sans-serif;
 }
 nav
 {
-	border-bottom: 1px solid gray;
+	/*border-bottom: 1px solid gray;*/
 	left: 0px;
 	position: absolute;
 	right: 0px;
 	top: 0px;
-	height: 116px;
+	height: 110px;
 }
 
 ul {
@@ -134,7 +135,7 @@ nav li {
 	width: 92%;
 	height: 21%;
 	border: 1px solid #707070;
-	border-radius: 36px;
+	border-radius: 16px;
 	font-family: sans-serif;
 	font-size: 18px;
 }
@@ -144,7 +145,7 @@ nav li {
 	width: 90%;
 	height: 21%;
 	border: 1px solid #707070;
-	border-radius: 36px;
+	border-radius: 16px;
 	font-family: sans-serif;
 	font-size: 18px;
 }
@@ -154,7 +155,7 @@ nav li {
 	width: 90%;
 	height: 21%;
 	border: 1px solid #707070;
-	border-radius: 36px;
+	border-radius: 16px;
 	font-family: sans-serif;
 	font-size: 18px;
 }
@@ -164,7 +165,7 @@ nav li {
 	width: 90%;
 	height: 21%;
 	border: 1px solid #707070;
-	border-radius: 36px;
+	border-radius: 16px;
 	font-family: sans-serif;
 	font-size: 18px;
 }

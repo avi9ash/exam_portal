@@ -1,7 +1,35 @@
-<?php
-    $q_id=1;
+<p>
+<?php 
 
- ?>
+    $query = "";
+        $text = "";
+        $db_host = 'localhost'; // Server Name
+        $db_user = 'root'; // Username
+        $db_pass = ''; // Password
+        $db_name = 'db_exam'; // Database Name
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn) {
+            die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
+        }
+       
+
+        $query = mysqli_query($conn, "SELECT * FROM tbl_questions");
+        if (!$query) {
+            die ('SQL Error: ' . mysqli_error($conn));
+        }
+
+        $rows = array();
+        while($row = mysqli_fetch_assoc($query)) {
+            $rows[] = $row;
+        }
+        $data = json_encode($rows);
+        //header("Refresh:0");
+        $json_file = fopen('js/questions.json', 'w+');
+
+        fwrite($json_file, $data);
+        fclose($json_file);
+ ?> </p>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +39,7 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
     <title>Exam Portal</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -19,11 +48,8 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> -->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript">
-        angular.bootstrap(document.getElementById("quest"), ['ng_questions']);
-
-    </script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <style type="text/css">
         body{
                    color:#000;
@@ -31,90 +57,131 @@
           }
 
            #container{
-                  /*Styling for any element with the id="container" */
+                  /*Styling for any element with the id="container1" */
                           width:1366px; /* The width is fixed by pixels */
-                           height:768px; /* The height is fixed by pixels*/
+                           height:748px; /* The height is fixed by pixels*/
                            
             }
     </style>
+    <script type="text/javascript">
+        
+    </script>
 </head>
 
     
-<body >
-    <div id="container">
-        <nav style="position: absolute; width: 1366px;">
-            <ul>
-                <li><a href="#"><img id="logo" src="images/stcet_logo2.png" style="float: left;"></a></li>
-                <b><li id="demo" class="timer1" style="position:absolute;"></li></b>
-                <li><button id="submit" class="button" style="vertical-align:middle"> <b><span>Submit </span></b> </button></li>
-            </ul>
-        </nav>
-        <p style="font-size: 11px; color: #FF0000; padding-left: 800px; padding-top: 82px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
-        <!-- count particles -->
-        <div id="sidebar" class="vl" ng-app="myApp" ng-controller="Main">
-            <br>
-            <div id="physics" class="w3-container"> 
-                <b>&nbsp&nbsp&nbspPhysics</b><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(1,10)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(11,20)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(21,25)">{{n}}</button>
-            </div>
-            <br>
-            <div id="chemistry" class="w3-container"> 
-                <b>&nbsp&nbspChemistry</b><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(26,35)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(36,45)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(46,50)">{{n}}</button>
-            </div>
-            <br>
-            <div id="maths" class="w3-container"> 
-                <b>&nbsp&nbsp&nbspMaths</b><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(51,60)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(61,70)">{{n}}</button><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(71,80)">{{n}}</button>
-            </div>
-            <br>
-            <div id="english" class="w3-container"> 
-                <b>&nbsp&nbsp&nbspEnglish</b><br>
-                <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(81,90)">{{n}}</button><br>
-               <button id="q{{getId(n)}}" class="qbtn" ng-repeat="n in range(91,100)">{{n}}</button> 
-            </div>
+<body>
+    <div id="container" ng-app="myApp" ng-controller="Main" ng-init="init();" style="background-color: #FFFFFF;">
+    <nav>
+        <ul>
+            <li><a href="#"><img id="logo" src="images/stcet_logo2.png" style="float: left;"></a></li>
+            <b><li id="demo" class="timer1"></li></b>
+            <li><button id="submit" class="button" ng-click="dialogBox()" style="vertical-align:middle"> <b><span>Submit </span></b> </button></li>
+        </ul>
+    </nav>
+    <p style="font-size: 11px; color: #FF0000; padding-left: 841px; padding-top: 64px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
+    <!-- count particles -->
+    <div class="vl">
+        <br>
+        <div id="physics" class="w3-container"> 
+            <b>&nbsp&nbsp&nbspPhysics</b><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(1,10)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(11,20)">{{n}}</button><br>
+            <!-- <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(21,25)">{{n}}</button> -->
         </div>
-
-        <div id="quest" ng-app="ng_questions" ng-controller="myController">
-
-            <!-- I will add a div here later for the mark, previous, next buttons -->
-
-
-            <!-- Question div comes after this line -->
-            <p> Here the questions go. </p>
-            <div ng-repeat="question in questions">
-            <p>{{question.text}}</p>
-            <p ng-repeat="option in question.options">&nbsp;&nbsp;&nbsp;{{option}}</p>
-
-        
-            
+        <br>
+        <div id="chemistry" class="w3-container"> 
+            <b>&nbsp&nbspChemistry</b><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(21,30)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(31,35)">{{n}}</button><br>
+            <!-- <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(46,50)">{{n}}</button> -->
         </div>
-
-        <p>Question:</p>
-       <div id="quest1"><b></b></div>
-    
-        <div method="post" action="exam.php">
-            
-                <button type="nextbtn" name="next" class="btn1" onclick="showQuestion()">Next</button>
-           
+        <br>
+        <div id="maths" class="w3-container"> 
+            <b>&nbsp&nbsp&nbspMaths</b><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(36,45)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(46,55)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(56,60)">{{n}}</button>
         </div>
-
-        
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+        <br>
+        <div id="english" class="w3-container"> 
+            <b>&nbsp&nbsp&nbspEnglish</b><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(61,70)">{{n}}</button><br>
+            <button id="q{{getId(n)}}" class="qbtn" ng-click="qSelect(n)" ng-repeat="n in range(71,80)">{{n}}</button> 
+        </div>
     </div>
+    <div id="question_side" style="border-top: 1px solid gray; margin-top: 20px;">
+
+        <!-- I will add a div here later for the mark, previous, next buttons -->
+        <br>
+        <div id="btn_div1">
+            <button id="prev" class="nav_btns" ng-click="qSelect(clicked-1)" style="vertical-align:middle"> <b><span>Previous </span></b> </button>
+            <!-- <button id="mark" class="mc" ng-click="qMark(clicked)" style="vertical-align:middle; margin-left: 250px;"> <b><span><i class="fas fa-bookmark"></i>&nbspMark </span></b> </button> -->
+            <button id="clear" class="mc" ng-click="qClear(clicked)" style="vertical-align:middle; margin-left: 280px;"> <b><span><i class="fas fa-eraser"></i>&nbspClear </span></b> </button>
+            <button id="next" class="nav_btns" ng-click="qSelect(clicked+1)" style="vertical-align:middle; float: right; margin-right: 30px;"> <b><span>Next </span></b> </button>
+        </div> 
+        <br style="border: 1px solid black;">
+        <div id="btn_div2"></div>
+        <br>
+
+        <!-- Question div comes after this line -->
+
+        <div style="float: left; overflow-y: scroll; height:470px;" ng-model="currentQs">
+            <!--<p style="margin-left: 20px; padding-right: 15px; font-family: sans-serif; font-size: 40px; float: left; border-right: 1px solid gray">9.</p>
+            <p style="margin-left: 10px; font-size: 25px; float: left; width: 850px;">This is a sample question. Just assume this is a really hard math question and pretend to get frustrated. What is 2 + 2?</p>
+
+            <form style="margin-left: 80px; font-family: sans-serif; font-size: 20px;">
+                <br><br>s
+                    <input type="radio" name="answer" value="4" ng-click="qAnswer(clicked)">&nbsp&nbsp4<br>
+                    <input type="radio" name="answer" value="Four" ng-click="qAnswer(clicked)">&nbsp&nbspFour<br>
+                    <input type="radio" name="answer" value="Not this option" ng-click="qAnswer(clicked)">&nbsp&nbspNot this option<br>
+                    <input type="radio" name="answer" value="Option 1" ng-click="qAnswer(clicked)">&nbsp&nbspOption 1<br>
+                <br>
+            </form> -->
+            <!--<input type="button" value="c" onclick="toggleFullScreen(document.body)" /> -->
+            <p style="margin-left: 16px; padding-right: 15px; font-family: sans-serif; font-size: 40px; float: left; border-right: 1px solid gray">{{currentQs.q_id}}{{"."}}</p>
+            <p style="margin-left: 10px; font-size: 25px; float: left; width: 850px;">{{currentQs.text}}</p>
+            <br>
+            <form style="margin-left: 100px; font-family: sans-serif; font-size: 20px; width: 760px;">
+                <br><br>
+                    <input type="radio" name="answer" value="4" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op1}}<br>
+                    <input type="radio" name="answer" value="Four" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op2}}<br>
+                    <input type="radio" name="answer" value="Not this option" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op3}}<br>
+                    <input type="radio" name="answer" value="Option 1" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op4}}<br>
+                <br>
+            </form>
+        </div>
+        <!--<p> Here the questions go. </p> -->
+
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-head">
+                <span class="close" ng-click="close()" style="font-size: 16px; padding-top: 1px;">&times;</span>
+                <p style="font-family: sans-serif; font-size: 22px; padding-top: 15px;">Do you want to submit NOW?</p>
+            </div>
+            <div class="modal-body">
+                <button id="yes" class="confirm"> Yes </button>
+                <button id="no" class="confirm" ng-click="close()"> No </button>
+            </div>
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+        
+    </script>
+    <script type="text/javascript" src="questions.json"></script>
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</div>
 </body>
 </html>
