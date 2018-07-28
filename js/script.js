@@ -82,9 +82,7 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
 		$scope.currentQs = qsArr[n-1];
     var ele = document.getElementsByName("answer");
     for(var i=0;i<ele.length;i++)
-    {  
       ele[i].checked = false;
-    }
     if(qsAns[n-1].ans == 9){}
     else
     {
@@ -120,6 +118,9 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
  		var ele = document.getElementsByName("answer");
    	for(var i=0;i<ele.length;i++)
    		ele[i].checked = false;
+    qsAns[n-1].ans = 9;
+    qsAns[n-1].anstxt = null;
+    console.log(qsAns);
    	var property = document.getElementById("q"+n);
   	property.style.backgroundColor = "#0B73DB";
 		$scope.ccolor = "#FFFFFF";
