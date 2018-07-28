@@ -80,6 +80,16 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
   	$scope.ccolor = w;
 		property.style.backgroundColor = "#0B73DB";
 		$scope.currentQs = qsArr[n-1];
+    var ele = document.getElementsByName("answer");
+    for(var i=0;i<ele.length;i++)
+    {  
+      ele[i].checked = false;
+    }
+    if(qsAns[n-1].ans == 9){}
+    else
+    {
+      ele[qsAns[n-1].ans].checked = true;
+    }
 		//toggleFullScreen(document.body);
  	};
 
@@ -97,10 +107,13 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
 			$scope.ccolor = property.style.backgroundColor;
 		}
  	};*/
- 	$scope.qAnswer = function(n) {
+ 	$scope.qAnswer = function(n, k,atxt) {
   	var property = document.getElementById("q"+n);
   	property.style.backgroundColor = "#17EE42";
 		$scope.ccolor = property.style.backgroundColor;
+    qsAns[n-1].ans = k;
+    qsAns[n-1].anstxt = atxt;
+    console.log(qsAns);
  	};
 
  	$scope.qClear = function(n) {
@@ -120,20 +133,6 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
   //     })
   // };
 
-  
-
-  // var thisCtrl = this;
-  // $scope.getData1 = function () {
-  // this.route = 'questions2.json';
-  // $http.get(thisCtrl.route)
-  //   .success(function(data){
-  //     console.log(data);
-  //   })
-  //   .error(function(data){
-  //     console.log("Error getting data from " + thisCtrl.route);
-  //   });  
-  // }
-  // console.log($scope.response);
 
   var qs =  function(q_id, text, op1, op2, op3, op4, ans, sub_id){
 			this.q_id = q_id,
@@ -145,17 +144,26 @@ angular.module('myApp', []).controller('Main', function ($scope, $http) {
 			this.ans = ans,
 			this.sub_id = sub_id
 	};
+  var qa =  function(q_id, ans, anstxt){
+      this.q_id = q_id,
+      this.ans = ans,
+      this.anstxt = anstxt
+  };
 	//var qsArr = [new qs(1,"This is the qs"), new qs(2, "This is second qs")];
 	var qsArr = [];
-	//var qsArr = JSON.parse('{ "q_id": "1", "text": "This is the first qs.", "op1": "1", "op2": "2", "op3": "3", "op4": "4", "ans": "2", "sub_id": "1" }');
+  var qsAns = [];
 	$scope.init = function(){
 		for (var i = 0; i < 80; i++) {
 			//qsArr.push(new qs(i+1, "This is the qs "+(i+1), (i+1), (i+2), (i+3), (i+4), "2", 1));
 			qsArr.push(new qs(questions[i].q_id, questions[i].text, questions[i].op1, questions[i].op2, questions[i].op3, questions[i].op4, questions[i].ans, questions[i].sub_id));
+      qsAns.push(new qa(questions[i].q_id, 9, null));
 		}
 		//qsArr.push(new qs(1, "This is the first qs.", "1", "2", "3", "4", "2", 1));
 		//qsArr.push(new qs(2, "This is the second qs.", "6", "7", "8", "9", "6", 1));
 		$scope.currentQs = qsArr[0];
+    var ele = document.getElementsByName("answer");
+    for(var i=0;i<ele.length;i++)
+      ele[i].checked = false;
 		console.log("Start");
 		//$scope.getData1();
 	};
