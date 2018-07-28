@@ -1,35 +1,38 @@
-<p>
+<!-- <p>
 <?php 
 
-    $query = "";
-        $text = "";
-        $db_host = 'localhost'; // Server Name
-        $db_user = 'root'; // Username
-        $db_pass = ''; // Password
-        $db_name = 'db_exam'; // Database Name
+    // $query = "";
+    //     $text = "";
+    //     $db_host = 'localhost'; // Server Name
+    //     $db_user = 'root'; // Username
+    //     $db_pass = ''; // Password
+    //     $db_name = 'db_exam'; // Database Name
 
-        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-        if (!$conn) {
-            die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
-        }
+    //     $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    //     if (!$conn) {
+    //         die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
+    //     }
        
 
-        $query = mysqli_query($conn, "SELECT * FROM tbl_questions");
-        if (!$query) {
-            die ('SQL Error: ' . mysqli_error($conn));
-        }
+    //     $query = mysqli_query($conn, "SELECT * FROM tbl_questions");
+    //     if (!$query) {
+    //         die ('SQL Error: ' . mysqli_error($conn));
+    //     }
 
-        $rows = array();
-        while($row = mysqli_fetch_assoc($query)) {
-            $rows[] = $row;
-        }
-        $data = json_encode($rows);
-        //header("Refresh:0");
-        $json_file = fopen('js/questions.json', 'w+');
+    //     $rows = array();
+    //     while($row = mysqli_fetch_assoc($query)) {
+    //         $rows[] = $row;
+    //     }
+    //     $data = json_encode($rows);
+    //     //header("Refresh:0");
+    //     $json_file = fopen('js/questions.json', 'w+');
 
-        fwrite($json_file, $data);
-        fclose($json_file);
+    //     fwrite($json_file, $data);
+    //     fclose($json_file);
  ?> </p>
+ -->
+<p></p>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

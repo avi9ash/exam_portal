@@ -1,6 +1,11 @@
 
-var request = new XMLHttpRequest();
+/*var request = new XMLHttpRequest();
 request.open("GET", "js/questions.json", false);
+request.send(null);
+var questions = JSON.parse(request.responseText);
+console.log(questions);*/
+var request = new XMLHttpRequest();
+request.open("GET", "http://localhost/exam_portal/retr.php", false);
 request.send(null);
 var questions = JSON.parse(request.responseText);
 console.log(questions);
