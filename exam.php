@@ -1,38 +1,3 @@
-<!-- <p>
-<?php 
-
-    // $query = "";
-    //     $text = "";
-    //     $db_host = 'localhost'; // Server Name
-    //     $db_user = 'root'; // Username
-    //     $db_pass = ''; // Password
-    //     $db_name = 'db_exam'; // Database Name
-
-    //     $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-    //     if (!$conn) {
-    //         die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
-    //     }
-       
-
-    //     $query = mysqli_query($conn, "SELECT * FROM tbl_questions");
-    //     if (!$query) {
-    //         die ('SQL Error: ' . mysqli_error($conn));
-    //     }
-
-    //     $rows = array();
-    //     while($row = mysqli_fetch_assoc($query)) {
-    //         $rows[] = $row;
-    //     }
-    //     $data = json_encode($rows);
-    //     //header("Refresh:0");
-    //     $json_file = fopen('js/questions.json', 'w+');
-
-    //     fwrite($json_file, $data);
-    //     fclose($json_file);
- ?> </p>
- -->
-<p></p>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,30 +6,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <script src="js/angular.min.js"></script>
 
     <title>Exam Portal</title>
-    <!-- Bootstrap core CSS 
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/w3.css">
-     Custom styles for this template 
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
-   
-	<!--<title>Exam Portal</title> -->
-     Bootstrap core CSS 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/w3.css" type="text/css" media="all">
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> 
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    
-	<style type="text/css">
+    <style type="text/css">
         body{
                    color:#000;
                    background-color:#fff;
@@ -73,7 +26,7 @@
            #container{
                   /*Styling for any element with the id="container1" */
                           width:1366px; /* The width is fixed by pixels */
-                           height:748px; /* The height is fixed by pixels*/
+                           height:768px; /* The height is fixed by pixels*/
                            
             }
     </style>
@@ -92,7 +45,7 @@
             <li><button id="submit" class="button" ng-click="dialogBox()" style="vertical-align:middle"> <b><span>Submit </span></b> </button></li>
         </ul>
     </nav>
-    <p style="font-size: 11px; color: #FF0000; padding-left: 841px; padding-top: 64px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
+    <p style="font-size: 11px; color: #FF0000; padding-left: 841px; padding-top: 80px;"><b>Hours &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinutes&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeconds</b></p>
     <!-- count particles -->
     <div class="vl">
         <br>
@@ -191,10 +144,10 @@
         
     </script>
     <script src="js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script> -->
 </div>
 </body>
 </html>
