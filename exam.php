@@ -146,10 +146,10 @@
             <br>
             <form style="margin-left: 100px; font-family: sans-serif; font-size: 20px; width: 760px;">
                 <br><br>
-                    <input type="radio" name="answer" value="4" ng-click="qAnswer(clicked, 0, currentQs.op1)">&nbsp&nbsp{{currentQs.op1}}<br>
-                    <input type="radio" name="answer" value="Four" ng-click="qAnswer(clicked, 1, currentQs.op2)">&nbsp&nbsp{{currentQs.op2}}<br>
-                    <input type="radio" name="answer" value="Not this option" ng-click="qAnswer(clicked, 2, currentQs.op3)">&nbsp&nbsp{{currentQs.op3}}<br>
-                    <input type="radio" name="answer" value="Option 1" ng-click="qAnswer(clicked, 3, currentQs.op4)">&nbsp&nbsp{{currentQs.op4}}<br>
+                    <input type="radio" name="answer" value="4" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op1}}<br>
+                    <input type="radio" name="answer" value="Four" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op2}}<br>
+                    <input type="radio" name="answer" value="Not this option" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op3}}<br>
+                    <input type="radio" name="answer" value="Option 1" ng-click="qAnswer(clicked)">&nbsp&nbsp{{currentQs.op4}}<br>
                 <br>
             </form>
         </div>
@@ -179,6 +179,7 @@
     <script>
         
     </script>
+    <script type="text/javascript" src="questions.json"></script>
     <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
