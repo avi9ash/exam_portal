@@ -70,8 +70,8 @@ include('server.php')
         <ul style="list-style: none;text-align: justify">
             <h3 style="text-align: center">Instruction for Examination</h3>
             <ol>
-                <li style="text-align: left;text-decoration: underline;font-size: 20px">There are a total of 75 questions.</li>
-                 <li style="text-align: left;font-size: 20px">Total Time: 90 minutes.</li>
+                <li style="text-align: left;font-size: 20px">There are a total of <b style="text-decoration: underline;">75 questions.</b></li>
+                 <li style="text-align: left;font-size: 20px">Total Time: <b style="text-decoration: underline;">90 minutes.</b></li>
                 <li style="text-align: left;font-size: 20px">Each question carry 1 marks each.</li>
                 <li style="text-align: left;font-size: 20px">No negative marking</li>
             </ol>
